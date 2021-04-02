@@ -11,17 +11,68 @@
 
 // Use some style, maybe Material UI?
 
+// start
+import React, { useState, useEffect } from 'react';
+
+// API
+import API from '../util/API.js'
+
 function Directory() {
-    // states here
-    
-    // onload GET API data to be rendered
+
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        console.log("Hello")
+        API.search()
+        .then((res) => {
+            setData(res.data.results)
+        })
+
+      },[]);
+
 
     return (
         <>
-            <div>Filters Here</div>
-            <div>Map directory Here</div>
+            {
+                data.map((employee, i) => {
+                    return <p key={i}>{employee.name.first}</p>
+                })
+            }
         </>
     )
+    
 }
+
+// class Directory extends React.Component {
+
+//     constructor(props) {
+//         super(props);
+    
+//         this.state = {
+//             data: [],
+//             fetching: true
+//         }
+//       }
+
+//     componentDidMount() {
+//         API.search()
+//         .then(res => {
+//             this.setState({
+//                 data: res.data.results,
+//                 fetching: false
+//               });
+//         })
+//     }
+
+//     render() {
+//         return (
+//             <div>
+//                 {this.state.data.map((employee) => {
+//                     return <p>{employee.name.first}</p>
+//                 })}
+//             </div>
+//         )
+//     }
+// }
 
 export default Directory
