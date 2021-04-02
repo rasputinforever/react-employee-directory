@@ -22,7 +22,6 @@ import Employee from './Employee.js'
 
 // material ui
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
@@ -55,13 +54,14 @@ function Directory() {
                     filter: false
                 })
             })
-            console.log(dataArr[0].data.picture.medium)
+            console.log(dataArr[0].data)
             setData(dataArr)
         })
       },[]);
 
     const Employees = data.map((emp, i) => {
-            return <Employee key={i} name={emp.data.name.first} image={emp.data.picture.medium}/>
+            
+            return <Employee key={i} title={emp.data.name.title} nameF={emp.data.name.first} nameL={emp.data.name.last} image={emp.data.picture.large} city={emp.data.location.city} country={emp.data.location.country} email={emp.data.email} phone={emp.data.cell}/>
             })
     
     
