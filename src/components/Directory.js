@@ -20,59 +20,46 @@ import API from '../util/API.js'
 function Directory() {
 
     const [data, setData] = useState([])
+    const [sort, setSort] = useState('alphabetical')
+
+    const [filter, setFilter] = useState('')
 
     useEffect(() => {
-        console.log("Hello")
         API.search()
         .then((res) => {
-            setData(res.data.results)
+            let dataArr = []
+            res.data.results.forEach(res => {
+                dataArr.push({
+                    data: res,
+                    filter: false
+                })
+            })
+            setData(dataArr)
         })
-
       },[]);
+    
+    function sortEmployees(sort) {
+        // will take two arguments, sort alphabetical or revAlphabetical
+        // take the data state and re-order it
+        // useState
+    }
 
+    function filterEmployees(sort) {
+        // take in some filter
+        // 
+    }
 
     return (
         <>
             {
-                data.map((employee, i) => {
-                    return <p key={i}>{employee.name.first}</p>
+                data.map((emp) => {
+                    console.log(emp.data.name.first)
+                    return <p>{emp.data.name.first}</p>
                 })
             }
         </>
     )
     
 }
-
-// class Directory extends React.Component {
-
-//     constructor(props) {
-//         super(props);
-    
-//         this.state = {
-//             data: [],
-//             fetching: true
-//         }
-//       }
-
-//     componentDidMount() {
-//         API.search()
-//         .then(res => {
-//             this.setState({
-//                 data: res.data.results,
-//                 fetching: false
-//               });
-//         })
-//     }
-
-//     render() {
-//         return (
-//             <div>
-//                 {this.state.data.map((employee) => {
-//                     return <p>{employee.name.first}</p>
-//                 })}
-//             </div>
-//         )
-//     }
-// }
 
 export default Directory
