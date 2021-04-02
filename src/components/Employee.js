@@ -1,22 +1,24 @@
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
-import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+    },
+  }));
 
 function Employee({name, image}) {
-    console.log(image)
+    const classes = useStyles();
     return (
-        <GridListTile>
-        <img src={image} alt={name} />
-            <GridListTileBar
-                subtitle={<span>by: {name}</span>}
-                actionIcon={
-                <IconButton aria-label={`info about ${name}`} className="">
-                    <InfoIcon />
-                </IconButton>
-                }
-            />
-        </GridListTile>
+        <Grid item xs={6} sm={3}>
+          <Paper className={classes.paper}>xs=6 sm=3</Paper>
+        </Grid>
     )
 }
 
