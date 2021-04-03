@@ -45,12 +45,13 @@ function Directory() {
         })
       },[]);
 
-      const Employees = data.map((emp, i) => {
+    const Employees = data.map((emp, i) => {
         if (!emp.filter) {
             return <Employee key={i} title={emp.data.name.title} nameF={emp.data.name.first} nameL={emp.data.name.last} image={emp.data.picture.large} city={emp.data.location.city} country={emp.data.location.country} email={emp.data.email} phone={emp.data.cell}/>
         }
-        
-        })
+
+        return <></>
+    })
         
       function handleInputs(event){
         switch(event.name) {
