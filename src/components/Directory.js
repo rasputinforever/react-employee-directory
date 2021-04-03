@@ -52,7 +52,6 @@ function Directory() {
                     filter: false
                 })
             })
-            console.log(dataArr[0].data)
             setData(dataArr)
         })
       },[]);
@@ -76,12 +75,24 @@ function Directory() {
       }
 
     function sortEmployees(sort) {
+        console.log(sort)
+        let newData = [...data]
+        console.log(newData)
+        if (sort === 'alph') {
+            newData.sort((a, b) => a.data.name.last.localeCompare(b.data.name.last))
+        } else {
+            newData.sort((b, a) => b.data.name.last.localeCompare(a.data.name.last))
+        }
+        console.log(newData)
+
+        setData(newData)
         // will take two arguments, sort alphabetical or revAlphabetical
         // take the data state and re-order it
         // useState
     }
 
-    function filterEmployees(sort) {
+    function filterEmployees(filter) {
+        console.log(filter)
         // take in some filter
         // 
     }
