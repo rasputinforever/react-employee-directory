@@ -40,6 +40,7 @@ function Directory() {
             })
 
             dataArr.sort((a, b) => a.data.name.last.localeCompare(b.data.name.last))
+            dataArr.sort((a, b) => a.data.location.country.localeCompare(b.data.location.country))
             setData(dataArr)
             
         })
@@ -61,6 +62,9 @@ function Directory() {
             case "location":
                 filterEmployees(event.value)
                 break;
+            case "country":
+                sortCountry(event.value)
+                break;
             default:
                 break;
             }
@@ -72,6 +76,19 @@ function Directory() {
 
         if (sort === 'alph') {
             newData.sort((a, b) => a.data.name.last.localeCompare(b.data.name.last))
+        } else {
+            newData.reverse()      
+        }
+
+        setData(newData)
+    }
+
+    function sortCountry(sort) {
+        
+        let newData = [...data];
+
+        if (sort === 'coun') {
+            newData.sort((a, b) => a.data.location.country.localeCompare(b.data.location.country))
         } else {
             newData.reverse()      
         }

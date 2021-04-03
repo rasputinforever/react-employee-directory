@@ -26,6 +26,7 @@ function Nav({ onUpdate }) {
     const classes = useStyles();
     const [location, setLocation] = React.useState('all');
     const [sort, setSort] = React.useState('alph');
+    const [country, setCountry] = React.useState('coun');
 
     const handleChangeSort = (event) => {
         onUpdate(event.target)
@@ -35,6 +36,11 @@ function Nav({ onUpdate }) {
     const handleChangeLocation = (event) => {
         onUpdate(event.target)
         setLocation(event.target.value);
+    };
+
+    const handleChangeCountry = (event) => {
+        onUpdate(event.target)
+        setCountry(event.target.value);
     };
 
     return (
@@ -52,7 +58,14 @@ function Nav({ onUpdate }) {
                     </RadioGroup>
                 </FormControl>
 
-                <FormControl>
+                <FormControl component="fieldset">
+                    <RadioGroup aria-label="country" name="country" value={country} onChange={handleChangeCountry}>
+                        <FormControlLabel value="coun" control={<Radio />} label="Country" />
+                        <FormControlLabel value="counrev" control={<Radio />} label="Country, Reverse" />
+                    </RadioGroup>
+                </FormControl>
+
+                <FormControl component="fieldset">
                     <RadioGroup aria-label="location" name="location" value={location} onChange={handleChangeLocation}>
                         <FormControlLabel value="all" control={<Radio />} label="All" />
                         <FormControlLabel value="us" control={<Radio />} label="United States" />
