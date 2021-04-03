@@ -60,7 +60,10 @@ function Directory() {
       },[]);
 
       const Employees = data.map((emp, i) => {
-        return <Employee key={i} title={emp.data.name.title} nameF={emp.data.name.first} nameL={emp.data.name.last} image={emp.data.picture.large} city={emp.data.location.city} country={emp.data.location.country} email={emp.data.email} phone={emp.data.cell}/>
+        if (!emp.filter) {
+            return <Employee key={i} title={emp.data.name.title} nameF={emp.data.name.first} nameL={emp.data.name.last} image={emp.data.picture.large} city={emp.data.location.city} country={emp.data.location.country} email={emp.data.email} phone={emp.data.cell}/>
+        }
+        
         })
         
       function handleInputs(event){
@@ -90,9 +93,22 @@ function Directory() {
     }
 
     function filterEmployees(filter) {
-        console.log(filter)
-        // take in some filter
-        // 
+        
+        let newData = [...data]
+        if (filter === "all") {filter = "usint"}
+        let usFilter = filter.indexOf("us") > -1
+        let intFilter = filter.indexOf("int") > -1
+        
+        newData.forEach(item => {
+
+            if (item.data.location.country === "United States") {
+                item.filter = !usFilter
+            } else {
+                item.filter = !intFilter
+            }
+        })
+
+        setData(newData)
     }
 
     return (
