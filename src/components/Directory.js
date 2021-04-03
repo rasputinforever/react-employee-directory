@@ -52,7 +52,10 @@ function Directory() {
                     filter: false
                 })
             })
+
+            dataArr.sort((a, b) => a.data.name.last.localeCompare(b.data.name.last))
             setData(dataArr)
+            
         })
       },[]);
 
