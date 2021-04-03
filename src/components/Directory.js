@@ -42,8 +42,8 @@ function Directory() {
 
     const [data, setData] = useState([])
     // will be used soon
-    const [sort, setSort] = useState('alphabetical')
-    const [filter, setFilter] = useState('')
+    const [location, setLocation] = React.useState('all');
+    const [sort, setSort] = React.useState('us');
 
     useEffect(() => {
         API.search()
@@ -60,9 +60,13 @@ function Directory() {
         })
       },[]);
 
+      function handleInputs(event){
+        console.log(event)
+      }
+
     const Employees = data.map((emp, i) => {
             
-            return <Employee key={i} title={emp.data.name.title} nameF={emp.data.name.first} nameL={emp.data.name.last} image={emp.data.picture.large} city={emp.data.location.city} country={emp.data.location.country} email={emp.data.email} phone={emp.data.cell}/>
+            return <Employee key={i} onUpdate={handleInputs} title={emp.data.name.title} nameF={emp.data.name.first} nameL={emp.data.name.last} image={emp.data.picture.large} city={emp.data.location.city} country={emp.data.location.country} email={emp.data.email} phone={emp.data.cell}/>
             })
     
     

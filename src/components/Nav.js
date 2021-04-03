@@ -29,7 +29,7 @@ function Nav() {
 
     const handleChangeSort = (event) => {
         setSort(event.target.value);
-      };
+    };
     
     const handleChangeLocation = (event) => {
     setLocation(event.target.value);
