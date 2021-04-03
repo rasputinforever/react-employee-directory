@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Employee({title, nameF, nameL, image, city, country, email, phone}) {
     const classes = useStyles();
-    const url = "https://www.google.com/search?q=" + nameF + " " + nameL
+    const url = "https://www.google.com/search?q=" + nameF + " " + nameL + " " + country
     return (
         <Grid item xs={6} sm={2}>
           <Paper className={classes.paper}>
