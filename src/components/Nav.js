@@ -25,15 +25,15 @@ const useStyles = makeStyles((theme) => ({
 function Nav({ onUpdate }) {
     const classes = useStyles();
     const [location, setLocation] = React.useState('all');
-    const [sort, setSort] = React.useState('us');
+    const [sort, setSort] = React.useState('alph');
 
     const handleChangeSort = (event) => {
-        onUpdate(event)
+        onUpdate(event.target)
         setSort(event.target.value);
     };
     
     const handleChangeLocation = (event) => {
-        onUpdate(event)
+        onUpdate(event.target)
         setLocation(event.target.value);
     };
 
@@ -47,8 +47,8 @@ function Nav({ onUpdate }) {
                 
                 <FormControl component="fieldset">
                     <RadioGroup aria-label="sort" name="sort" value={sort} onChange={handleChangeSort}>
-                        <FormControlLabel value="us" control={<Radio />} label="Alphabetical" />
-                        <FormControlLabel value="int" control={<Radio />} label="Alphabetical, Reverse" />
+                        <FormControlLabel value="alph" control={<Radio />} label="Alphabetical" />
+                        <FormControlLabel value="alphrev" control={<Radio />} label="Alphabetical, Reverse" />
                     </RadioGroup>
                 </FormControl>
 

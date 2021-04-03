@@ -41,9 +41,6 @@ function Directory() {
     const classes = useStyles();
 
     const [data, setData] = useState([])
-    // will be used soon
-    const [location, setLocation] = React.useState('all');
-    const [sort, setSort] = React.useState('us');
 
     useEffect(() => {
         API.search()
@@ -60,16 +57,24 @@ function Directory() {
         })
       },[]);
 
+      const Employees = data.map((emp, i) => {
+            
+        return <Employee key={i} title={emp.data.name.title} nameF={emp.data.name.first} nameL={emp.data.name.last} image={emp.data.picture.large} city={emp.data.location.city} country={emp.data.location.country} email={emp.data.email} phone={emp.data.cell}/>
+        })
+        
       function handleInputs(event){
-        console.log(event)
+        switch(event.name) {
+            case "sort":
+                sortEmployees(event.value)
+                break;
+            case "location":
+                filterEmployees(event.value)
+                break;
+            default:
+                break;
+            }
       }
 
-    const Employees = data.map((emp, i) => {
-            
-            return <Employee key={i} title={emp.data.name.title} nameF={emp.data.name.first} nameL={emp.data.name.last} image={emp.data.picture.large} city={emp.data.location.city} country={emp.data.location.country} email={emp.data.email} phone={emp.data.cell}/>
-            })
-    
-    
     function sortEmployees(sort) {
         // will take two arguments, sort alphabetical or revAlphabetical
         // take the data state and re-order it
