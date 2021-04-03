@@ -22,17 +22,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Nav() {
+function Nav({ onUpdate }) {
     const classes = useStyles();
     const [location, setLocation] = React.useState('all');
     const [sort, setSort] = React.useState('us');
 
     const handleChangeSort = (event) => {
+        onUpdate(event)
         setSort(event.target.value);
     };
     
     const handleChangeLocation = (event) => {
-    setLocation(event.target.value);
+        onUpdate(event)
+        setLocation(event.target.value);
     };
 
     return (
