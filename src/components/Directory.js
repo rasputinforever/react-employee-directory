@@ -40,7 +40,6 @@ function Directory() {
             })
 
             dataArr.sort((a, b) => a.data.name.last.localeCompare(b.data.name.last))
-            dataArr.sort((a, b) => a.data.location.country.localeCompare(b.data.location.country))
             setData(dataArr)
             
         })
