@@ -27,11 +27,12 @@ const useStyles = makeStyles((theme) => ({
 
 function Employee({title, nameF, nameL, image, city, country, email, phone}) {
     const classes = useStyles();
+    const url = "https://www.google.com/search?q=" + nameF + " " + nameL
     return (
         <Grid item xs={6} sm={2}>
           <Paper className={classes.paper}>
           <Grid item>
-            <ButtonBase className={classes.image}>
+            <ButtonBase className={classes.image} href={url}>
               <img className={classes.img} alt="complex" src={image} />
             </ButtonBase>
           </Grid>
