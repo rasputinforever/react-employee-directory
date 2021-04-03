@@ -57,7 +57,6 @@ function Directory() {
       },[]);
 
       const Employees = data.map((emp, i) => {
-            
         return <Employee key={i} title={emp.data.name.title} nameF={emp.data.name.first} nameL={emp.data.name.last} image={emp.data.picture.large} city={emp.data.location.city} country={emp.data.location.country} email={emp.data.email} phone={emp.data.cell}/>
         })
         
@@ -75,20 +74,16 @@ function Directory() {
       }
 
     function sortEmployees(sort) {
-        console.log(sort)
-        let newData = [...data]
-        console.log(newData)
+        
+        let newData = [...data];
+
         if (sort === 'alph') {
             newData.sort((a, b) => a.data.name.last.localeCompare(b.data.name.last))
         } else {
-            newData.sort((b, a) => b.data.name.last.localeCompare(a.data.name.last))
+            newData.reverse()      
         }
-        console.log(newData)
 
         setData(newData)
-        // will take two arguments, sort alphabetical or revAlphabetical
-        // take the data state and re-order it
-        // useState
     }
 
     function filterEmployees(filter) {
