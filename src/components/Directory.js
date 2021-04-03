@@ -18,6 +18,7 @@ import React, { useState, useEffect } from 'react';
 import API from '../util/API.js'
 
 // components
+import Nav from './Nav.js'
 import Employee from './Employee.js'
 
 // material ui
@@ -78,6 +79,7 @@ function Directory() {
 
     return (
         <>
+        <Nav />
             <div className={classes.root}>
       <Grid container spacing={3}>
 
